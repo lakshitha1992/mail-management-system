@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # DocuFlow — Mail & Document Management
 
 DocuFlow is a lightweight, local-first mail and document management dashboard built with React and Tailwind CSS. It helps small teams draft, send, organize, and track simple mailbox and document workflows without a backend — everything runs in your browser using `localStorage` for demo data and persistence.
@@ -92,3 +93,7 @@ Tell me which one and I'll add it.
 ---
 
 Thanks for building with DocuFlow — let me know if you want a polished README banner, badges, or screenshots added next!
+=======
+# mail-management-system
+Office mail management system
+>>>>>>> 99623cdb8c16c0aae56485f4a4e5001d256de98a
