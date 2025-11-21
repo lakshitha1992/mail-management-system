@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# DocuFlow — Mail & Document Management
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+DocuFlow is a lightweight, local-first mail and document management dashboard built with React and Tailwind CSS. It helps small teams draft, send, organize, and track simple mailbox and document workflows without a backend — everything runs in your browser using `localStorage` for demo data and persistence.
 
-## Available Scripts
+This repository contains the UI and components for composing messages, managing drafts, viewing sent items, handling password-reset requests, and administering users/permissions.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+**Quick Overview**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Modern, responsive dashboard UI with quick links and inline component rendering.
+- Local-first demo data: `localStorage` is used for drafts, sent messages, and reset requests.
+- Admin area includes user creation, permission management, company setup, and theme selector.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+**Getting Started (Windows / PowerShell)**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Open PowerShell in the repository root and run:
 
-### `npm run build`
+```powershell
+npm install
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The dev server will start (usually on `http://localhost:3000`).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Build for production:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```powershell
+npm run build
+```
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Where to look**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `src/pages/Dashboard.js` — Main layout, header, and sidebar.
+- `src/pages/dashboard-components/` — All dashboard sections (Inbox, Compose, Sent, PasswordResetRequests, etc.).
+- `public/` — Static assets.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**LocalStorage Keys & Demo Data**
 
-## Learn More
+You can inspect or seed the app with demo data using the browser DevTools → Application → Local Storage. Useful keys:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `draft_mails_v1` — Draft messages (array)
+- `sent_mails_v1` — Sent messages / outside mailbox (array)
+- `password_reset_requests` — Password reset requests (array)
+- `permissions_map` — Optional permission mapping
+- `user` / `users` — Demo users
+- `dashboard_last_inbox_seen` — Timestamp used to compute "new" messages on the Dashboard
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The `Inbox` and other components include lightweight seeding logic so a fresh install will show sample items.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**How the Dashboard determines "New" messages**
 
-### Analyzing the Bundle Size
+The Dashboard compares message timestamps to the `dashboard_last_inbox_seen` value in `localStorage`. Clicking **Mark seen** sets that timestamp to now and clears the "new" count.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+**Contributing**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Contributions are welcome. For best results:
 
-### Advanced Configuration
+- Open an issue to discuss larger changes first.
+- Keep changes small and focused; one feature or bug per PR.
+- Preserve the `localStorage` keys unless you add migration logic.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+If you'd like, I can add templates for PRs and issues or a `CONTRIBUTING.md` file.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**Extras I can add for you**
 
-### `npm run build` fails to minify
+- `LICENSE` (e.g., MIT) and `CONTRIBUTING.md`.
+- A GitHub Actions workflow to build the app and publish the `build/` artifact.
+- A short screenshot or GIF in this README showing the Dashboard overview and Inbox flows.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Tell me which one and I'll add it.
+
+---
+
+**Author / Contact**
+
+- Pawan Anuruddha
+- Facebook: https://web.facebook.com/pawan.anuruddha/
+
+---
+
+Thanks for building with DocuFlow — let me know if you want a polished README banner, badges, or screenshots added next!

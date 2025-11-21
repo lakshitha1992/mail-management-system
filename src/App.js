@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Home from './pages/Home';
+
+import Dashboard from './pages/Dashboard';
+import Footer from './components/Footer';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App min-h-screen flex flex-col">
+      <ThemeProvider>
+        <BrowserRouter>
+          <main className="flex-grow">
+            <Routes>
+           
+              <Route path="/" element={<Home />} />
+      
+              <Route path="/dashboard" element={<Dashboard />} />
+              {/* Add more routes here as your app grows */}
+            </Routes>
+          </main>
+          <Footer />
+        </BrowserRouter>
+      </ThemeProvider>
     </div>
   );
 }
